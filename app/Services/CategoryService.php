@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Repositories\CategoryRepository;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use InvalidArgumentException;
 
 class CategoryService
 {
@@ -54,7 +53,7 @@ class CategoryService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new InvalidArgumentException('Failed to update category.', 500);
+            throw new Exception('Failed to update category.', 500);
         }
         DB::commit();
 
@@ -69,7 +68,7 @@ class CategoryService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new InvalidArgumentException('Failed to delete category.', 500);
+            throw new Exception('Failed to delete category.', 500);
         }
         DB::commit();
 
