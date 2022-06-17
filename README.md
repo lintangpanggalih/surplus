@@ -1,57 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Tentang Repository
+Repository ini berisi source code (REST API) untuk asesmen Backend. Dibangun menggunakan [Laravel 8](https://laravel.com/docs/8.x/).
 
-## About Laravel
+# Install Project
+1. Buat database baru `surplus`
+2. Run `composer install`
+3. Run `php artisan key:generate` 
+4. Run `php artisan migrate`
+5. Run `php artisan db:seed`
+6. Run `php artisan serve`
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Endpoint
+Struktur endpoint (URLs) untuk masing-masing data resources menggunakan HTTP methods - GET, PUT, POST, DELETE. 
+Semua endpoint dibawah ini diakses diawali dengan URI `domain.com/api/`, sesuai dengan standar pada `route/api.php` pada Framework Laravel.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<details><summary>Product Endpoint</summary>
+<p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Endpoint | Data Params |HTTP Method | CRUD Method | Result
+-- | -- |-- |-- |--
+`product` | `none` | GET | READ | Get all products
+`product` | `name`<br />`description`<br />`enable (boolean)` | POST | CREATE | Create a new product
+`product/{id}` |`none` |  GET | READ | Get a single product
+`product/{id}` | `name`<br/>`description`<br/>`enable (boolean)` |  PUT | UPDATE | Update a product
+`product/{id}` |`none` |  DELETE | DELETE | Delete a product
+`product/{id}/update-image` | `image: [image_id]`<br/>`action: ["add" or "remove"]` |  PUT | UPDATE | Update **(add or remove)** a image of product
+`product/{id}/update-category` | `image: [category_id]`<br/>`action: ["add" or "remove"]` |  PUT | UPDATE | Update **(add or remove)** a category of product
+    
+</p>
+</details>
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<details><summary>Category Endpoint</summary>
+<p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Endpoint | Data Params |HTTP Method | CRUD Method | Result
+-- | -- |-- |-- |--
+`category` | `none` | GET | READ | Get all categories
+`category` | `name`<br />`enable (boolean)` | POST | CREATE | Create a new category
+`category/{id}` |`none` |  GET | READ | Get a single category
+`category/{id}` | `name`<br/>`enable (boolean)` |  PUT | UPDATE | Update a category
+`category/{id}` |`none` |  DELETE | DELETE | Delete a category
+    
+</p>
+</details>
 
-## Laravel Sponsors
+<details><summary>Image Endpoint</summary>
+<p>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Endpoint | Data Params |HTTP Method | CRUD Method | Result
+-- | -- |-- |-- |--
+`image` | `none` | GET | READ | Get all images
+`image` | `image (file)`<br />`enable (boolean)` | POST | CREATE | Create a new image
+`image/{id}` |`none` |  GET | READ | Get a single image
+`image/{id}` | `enable (boolean)` |  PUT | UPDATE | Update a image
+`image/{id}` |`none` |  DELETE | DELETE | Delete a image
+    
+</p>
+</details>
