@@ -28,9 +28,7 @@ Route::get('product/{id}', [ProductController::class, 'show']);
 Route::put('product/{id}', [ProductController::class, 'update']);
 Route::delete('product/{id}', [ProductController::class, 'destroy']);
 Route::put('product/{product}/update-category', [ProductController::class, 'updateCategory']);
-Route::put('product/{product}/remove-category', [ProductController::class, 'removeCategory']);
 Route::put('product/{product}/update-image', [ProductController::class, 'updateImage']);
-Route::put('product/{product}/remove-image', [ProductController::class, 'removeImage']);
 
 /** CATEGORY ROUTES */
 Route::get('category', [CategoryController::class, 'index']);
