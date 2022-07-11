@@ -22,12 +22,14 @@ class imageService
     {
         return $this->imageRepo->all();
     }
+
     public function fileChecker($path)
     {
         if (!Storage::exists('public/' . $path))
             throw new Exception("Image doesn't exists.", 404);
         return true;
     }
+    
     public function getById($id)
     {
         try {

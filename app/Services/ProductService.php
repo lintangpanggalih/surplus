@@ -112,7 +112,7 @@ class ProductService
             }
         } catch (\Throwable $th) {
             DB::rollBack();
-            throw new Exception('Failed to add product category.', 500);
+            throw new Exception('Failed to update product category.', 500);
         }
         DB::commit();
 

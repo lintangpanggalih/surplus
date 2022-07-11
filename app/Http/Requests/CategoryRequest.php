@@ -25,7 +25,6 @@ class CategoryRequest extends FormRequest
      *
      * @return array
      */
-
     public function rules()
     {
         $name_unique = Rule::unique('categories', 'name');
